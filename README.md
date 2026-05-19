@@ -1,29 +1,29 @@
-# Orientation Chatbot Application
+# Food Delivery Website
 
 ## Project Overview
 
-The purpose of this project is to develop a web-based chatbot application that supports new students during the orientation program. The chatbot will provide quick and accurate answers about orientation schedules, locations, events, and frequently asked questions. It will also encourage student engagement by suggesting games and interactive activities.
+The purpose of this project is to develop a web-based food delivery website that helps users order food online quickly and easily. The website will provide restaurant information, food menus, prices, delivery options, and order tracking. It will also improve user experience by offering food recommendations and collecting customer feedback.
 
 ## Objectives
 
-- To develop a web-based chatbot that can answer questions about the orientation program.
-- To help new students access important orientation information quickly and easily.
-- To promote interaction among new students through games and collaborative activities.
-- To collect user feedback to improve the chatbot and future orientation programs.
+- To develop a food delivery website that allows users to order food online.
+- To help users find restaurants, menus, prices, and delivery information quickly.
+- To make the ordering process simple and convenient for users.
+- To collect user feedback to improve the application and food delivery service.
 
 ## Main Features
 
-- Orientation information support
-- Frequently asked questions answering
-- Campus location and event information
-- Interactive game and activity suggestions
+- Restaurant and food menu information
+- Online food ordering
+- Food search and recommendation
+- Delivery address and payment support
+- Order tracking
 - User feedback collection
-
 ## Technology Stack
 
 - Front-end: HTML, CSS, JavaScript
-- Back-end: Node.js
-- Database: MySQL or Firebase
+- Back-end: PHP
+- Database: MySQL
 - Version Control: GitHub
 
 ## Team Members and Roles
