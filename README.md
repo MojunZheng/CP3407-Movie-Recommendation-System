@@ -37,11 +37,13 @@ The purpose of this project is to develop a web-based food delivery website that
 
 ## Initial Backlog Ideas
 
-1. As a new student, I want to ask the chatbot about the orientation schedule, so that I can know when and where to attend each activity.
-2. As a new student, I want to ask about campus locations, so that I can find classrooms and facilities easily.
-3. As a new student, I want to ask frequently asked questions, so that I can get quick answers without contacting staff.
-4. As a student affairs staff member, I want to update orientation information, so that students can receive accurate and current information.
-5. As a new student, I want the chatbot to suggest games or activities, so that I can interact with other students.
-6. As a new student, I want to receive reminders about important orientation events, so that I do not miss any activities.
-7. As a user, I want to give feedback on chatbot responses, so that the chatbot can be improved in the future.
-8. As an administrator, I want to manage chatbot content, so that the information remains useful and relevant.
+1. As a customer, I want to search for restaurants, so that I can find food easily.
+2. As a customer, I want to view food menus and prices, so that I can choose meals before ordering.
+3. As a customer, I want to order food online, so that I can receive food delivery quickly and conveniently.
+4. As a customer, I want to add food items to a shopping cart, so that I can order multiple meals at the same time.
+5. As a customer, I want to choose a delivery address, so that my food can be delivered to the correct location.
+6. As a customer, I want to make online payments, so that I can complete my order easily.
+7. As a restaurant staff member, I want to update food menus and prices, so that customers can see correct information.
+8. As an administrator, I want to manage users and restaurant information, so that the website remains accurate and organized.
+9. As a customer, I want to give feedback and ratings, so that the service quality can improve in the future.
+
