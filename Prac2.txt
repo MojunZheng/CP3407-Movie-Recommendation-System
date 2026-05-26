@@ -1,0 +1,66 @@
+Practical 2 Report
+Food Delivery Website Project
+
+Student Name	Role
+Mojun Zheng	    Project Manager and Documentation
+Junfei Chen	    Front-end Developer
+Song Yuheng	    Back-end Developer
+Weng Yuchuan	Tester and UI/UX Designer
+
+Task One – User Interview and Requirements Gathering
+Introduction
+Our team interviewed several target users to understand their expectations and requirements for the Food Delivery Website project. 
+The purpose of the interview was to identify common problems users face when ordering food online and determine useful features 
+for our software.
+The interviews were conducted with university students and working adults who frequently use online food delivery services.
+
+Interview Questions
+-How often do you order food online?
+-What problems do you usually face with food delivery apps?
+-What features do you think are most important?
+-What payment methods do you prefer?
+-Would you like order tracking functionality?
+-What makes you choose one food delivery app over another?
+
+Interview Summary
+User 1	Wants fast checkout and simple UI
+User 2	Needs real-time order tracking
+User 3	Prefers multiple payment methods
+User 4	Wants restaurant ratings and reviews
+User 5	Needs mobile-friendly design
+
+Identified Requirements
+Based on the interviews, the team identified the following requirements:
+    Functional requirements
+        -User registration and login
+        -Browse food menu
+        -Search food items
+        -Add items to cart
+        -Online payment
+        -Order tracking
+        -Restaurant ratings and reviews
+        -Admin management system
+
+    Non-Functional Requirements
+        -Responsive design
+        -Fast loading speed
+        -Secure payment system
+        -Easy-to-use interface
+
+| ID   | User Story Title         | User Story Description                                                          | Priority | Effort (Days) |
+| ---- | ------------------------ | ------------------------------------------------------------------------------- | -------- | ------------- |
+| US1  | User Registration        | As a user, I want to create an account so that I can place orders securely.     | 50       | 2             |
+| US2  | User Login               | As a user, I want to log into my account so that I can access my order history. | 50       | 1             |
+| US3  | Browse Menu              | As a user, I want to browse food items so that I can select meals easily.       | 50       | 2             |
+| US4  | Search Food              | As a user, I want to search for food items so that I can quickly find meals.    | 40       | 1             |
+| US5  | Add to Cart              | As a user, I want to add food items to my cart before checkout.                 | 50       | 2             |
+| US6  | Online Payment           | As a user, I want to pay online securely so that I can complete my order.       | 50       | 3             |
+| US7  | Order Tracking           | As a user, I want to track my order status in real time.                        | 40       | 3             |
+| US8  | Ratings and Reviews      | As a user, I want to rate restaurants and leave reviews.                        | 30       | 2             |
+| US9  | Admin Food Management    | As an admin, I want to add or remove food items from the menu.                  | 40       | 2             |
+| US10 | Mobile Responsive Design | As a user, I want the website to work well on mobile devices.                   | 50       | 2             |
+
+Conclusion
+The interviews helped the team better understand user expectations for a food delivery platform. Based on the feedback, 
+we created a list of user stories with priorities and estimated development effort. 
+These user stories will guide the development process for future iterations of the project.
