@@ -15,6 +15,8 @@ The actual velocity of Iteration 1 is calculated by adding the effort of all com
 
 The actual velocity of Iteration 1 is **45 person-days** because all planned Iteration 1 user stories were completed.
 
+---
+
 ## 2. SRP and DRY Check
 
 | Class / Component | SRP Check | DRY Check | Finding |
@@ -27,11 +29,20 @@ The actual velocity of Iteration 1 is **45 person-days** because all planned Ite
 | Administrator | Mostly satisfies SRP | Needs improvement | The Administrator class handles adding, updating and deleting movie information. Some validation logic may be repeated. |
 | MovieCatalogService | Satisfies SRP | Mostly satisfies DRY | This service handles movie browsing, keyword search and tag search. Repeated search query logic should be reduced. |
 
-Overall, most classes satisfy SRP because each class has a clear responsibility. However, RecommendationService may become too complex if all recommendation logic stays in one class. For DRY, repeated validation and database query logic should be refactored into reusable methods in future iterations.
+Overall, most classes satisfy SRP because each class has a clear responsibility. However, `RecommendationService` may become too complex if all recommendation logic stays in one class. For DRY, repeated validation and database query logic should be refactored into reusable methods in future iterations.
+
+---
 
 ## 3. Iteration 1 Burndown Rate Graph
 
-![Iteration 1 Burndown Chart](iteration1_burndown_chart.png)
+```mermaid
+xychart-beta
+    title "Iteration 1 Burndown Chart"
+    x-axis "Days Left" [15, 12, 9, 6, 3, 0]
+    y-axis "Work Left (person-days)" 0 --> 45
+    line "Ideal Work Left" [45, 36, 27, 18, 9, 0]
+    line "Actual Work Left" [45, 38, 28, 18, 8, 0]
+```
 
 | Days Left | Ideal Work Left | Actual Work Left |
 |---:|---:|---:|
@@ -44,13 +55,15 @@ Overall, most classes satisfy SRP because each class has a clear responsibility.
 
 The burndown graph shows that the team started Iteration 1 with 45 person-days of planned work. The actual progress was slightly slower than the ideal line at the beginning, but the team caught up later and completed all planned work by the end of the iteration.
 
+---
+
 ## 4. Updated Iteration 2 Backlog Based on Iteration 1 Velocity
 
-The actual velocity from Iteration 1 was **45 person-days**. This velocity was used as a reference point when reviewing the Iteration 2 backlog.
+The actual velocity from Iteration 1 was **45 person-days**. This velocity was used as a planning reference for reviewing the Iteration 2 backlog.
 
-The Iteration 2 backlog contained three major user stories. The total effort was **80 person-days**, which was higher than the Iteration 1 velocity. This showed that Iteration 2 had a heavier workload than Iteration 1. Therefore, the team needed to monitor the Iteration 2 tasks carefully and make sure the work was completed using GitHub labels and task tracking.
+The Iteration 2 backlog contained three major user stories with a total estimated effort of **80 person-days**. This was higher than the Iteration 1 velocity, so the team split the large user stories into smaller sub-issues and monitored them using GitHub Project Board status labels.
 
-By the end of Iteration 2, all three planned Iteration 2 user stories and their sub-issues were completed.
+By the end of Iteration 2, all three planned Iteration 2 user stories and all related sub-issues were completed.
 
 | Iteration 2 User Story | Priority | Effort | Sub-Issues Completed | Final Status |
 |---|---:|---:|---:|---|
@@ -61,7 +74,9 @@ By the end of Iteration 2, all three planned Iteration 2 user stories and their 
 
 ### Backlog Planning Reflection
 
-Although the Iteration 2 backlog was larger than the Iteration 1 velocity, the team completed all planned Iteration 2 work. For future iterations, the team should still use actual velocity as a planning reference and avoid overloading the backlog. Large user stories should be split into smaller tasks so that progress can be monitored more clearly.
+Although the Iteration 2 backlog was larger than the Iteration 1 velocity, the team completed all planned Iteration 2 work. For future iterations, the team should continue using actual velocity as a planning reference and avoid overloading the backlog. Large user stories should be split into smaller tasks so progress can be monitored more clearly.
+
+---
 
 ## 5. Monitoring Iteration 2 Tasks and User Stories
 
@@ -128,6 +143,8 @@ By the end of Iteration 2, all Iteration 2 user stories and their sub-issues wer
 | Fix Add-Movie Bugs and Update Documentation | 1 day | Done |
 | **Total** | **30 days** | **Completed** |
 
+---
+
 ## 6. Completed vs Unfinished User Stories
 
 ### Iteration 1
@@ -149,6 +166,8 @@ By the end of Iteration 2, all Iteration 2 user stories and their sub-issues wer
 | Favourite Movies | 30 days | Completed | Users can add, remove, and view favourite movies. |
 | Admin Add Movie Information | 30 days | Completed | Administrators can add movie information with validation and result messages. |
 | **Total** | **80 days** | **All completed** | No Iteration 2 user stories were left unfinished. |
+
+---
 
 ## 7. GitHub Pages Update for Completed User Stories
 
