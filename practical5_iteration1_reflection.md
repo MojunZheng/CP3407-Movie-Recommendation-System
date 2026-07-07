@@ -30,3 +30,20 @@ The actual velocity of Iteration 1 is calculated by adding the effort of all com
 | **Actual Velocity**         | **45 person-days** |
 
 The actual velocity of Iteration 1 is **45 person-days**.
+
+## Actual Velocity of Iteration 1
+
+The actual velocity of Iteration 1 is 45 person-days.
+
+This is calculated by adding the effort of all completed user stories in Iteration 1:
+
+| Completed User Story | Effort |
+|---|---:|
+| User Registration and Login | 10 days |
+| Search Movies by Tags | 8 days |
+| View Landing Page | 10 days |
+| Browse Movie List | 12 days |
+| Search Movies by Keyword | 5 days |
+| **Actual Velocity** | **45 person-days** |
+
+Since all planned Iteration 1 user stories were completed, the actual velocity is equal to the total completed effort.
