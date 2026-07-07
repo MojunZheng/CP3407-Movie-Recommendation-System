@@ -47,3 +47,17 @@ This is calculated by adding the effort of all completed user stories in Iterati
 | **Actual Velocity** | **45 person-days** |
 
 Since all planned Iteration 1 user stories were completed, the actual velocity is equal to the total completed effort.
+
+## SRP and DRY Check
+
+| Class / Component | SRP Check | DRY Check | Finding |
+|---|---|---|---|
+| User | Mostly satisfies SRP | Mostly satisfies DRY | The User class handles registration, login, profile update and preference tags. These functions are related to user account management. |
+| Movie | Satisfies SRP | Satisfies DRY | The Movie class focuses on storing and managing movie information only. |
+| Tag | Satisfies SRP | Satisfies DRY | The Tag class focuses on movie category and tag-based filtering. |
+| Favourite | Satisfies SRP | Mostly satisfies DRY | The Favourite class handles saving and removing favourite movies. It should reuse user and movie validation logic. |
+| RecommendationService | Needs improvement | Needs improvement | This service handles scoring, ranking and generating recommendations. It may become too complex, so the scoring logic could be separated later. |
+| Administrator | Mostly satisfies SRP | Needs improvement | The Administrator class handles adding, updating and deleting movie information. Some validation logic may be repeated. |
+| MovieCatalogService | Satisfies SRP | Mostly satisfies DRY | This service handles movie browsing, keyword search and tag search. Repeated search query logic should be reduced. |
+
+Overall, most classes satisfy SRP because each class has a clear responsibility. However, RecommendationService may become too complex if all recommendation logic stays in one class. For DRY, repeated validation and database query logic should be refactored into reusable methods in future iterations.
