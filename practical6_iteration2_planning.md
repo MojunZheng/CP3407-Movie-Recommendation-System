@@ -15,6 +15,31 @@ The actual velocity of Iteration 1 is calculated by adding the effort of all com
 
 The actual velocity of Iteration 1 is **45 person-days** because all planned Iteration 1 user stories were completed.
 
+### Team Capacity and Velocity Usage
+
+Iteration 1 lasted for approximately 3 working weeks. Each team member had about 15 working days available during this iteration.
+
+Since the team had 4 members, the total team capacity was calculated as:
+
+```text
+15 working days × 4 team members = 60 person-days
+```
+
+The team completed 45 person-days of work in Iteration 1. Therefore, the velocity usage rate was calculated as:
+
+```text
+45 / 60 = 0.75 = 75%
+```
+
+This means the team used about **75%** of its available capacity in Iteration 1.
+
+| Item | Calculation | Result |
+|---|---:|---:|
+| Working days per member | 3 weeks × 5 working days | 15 days |
+| Team capacity | 15 days × 4 members | 60 person-days |
+| Completed effort | Sum of completed Iteration 1 user stories | 45 person-days |
+| Velocity usage rate | 45 / 60 | 75% |
+
 ---
 
 ## 2. SRP and DRY Check
