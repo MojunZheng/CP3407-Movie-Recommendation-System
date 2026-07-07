@@ -61,3 +61,35 @@ Since all planned Iteration 1 user stories were completed, the actual velocity i
 | MovieCatalogService | Satisfies SRP | Mostly satisfies DRY | This service handles movie browsing, keyword search and tag search. Repeated search query logic should be reduced. |
 
 Overall, most classes satisfy SRP because each class has a clear responsibility. However, RecommendationService may become too complex if all recommendation logic stays in one class. For DRY, repeated validation and database query logic should be refactored into reusable methods in future iterations.
+
+## Monitoring Tasks and User Stories
+
+The team monitored Iteration 1 user stories and tasks using GitHub Project Board labels and status columns.
+
+The following labels/statuses were used:
+
+- Todo
+- In Progress
+- Done
+
+By the end of Iteration 1, all five planned user stories were moved to **Done** because they were completed.
+
+| User Story | Final Status |
+|---|---|
+| User Registration and Login | Done |
+| Search Movies by Tags | Done |
+| View Landing Page | Done |
+| Browse Movie List | Done |
+| Search Movies by Keyword | Done |
+
+## GitHub Pages Update for Completed User Stories
+
+GitHub Pages was updated for each completed Iteration 1 user story. Each completed user story includes a short description, implementation status, and evidence of the completed feature.
+
+| Completed User Story | GitHub Pages Update |
+|---|---|
+| User Registration and Login | Added description and evidence for registration and login pages. |
+| Search Movies by Tags | Added description and evidence for tag-based movie search. |
+| View Landing Page | Added description and evidence for the landing page. |
+| Browse Movie List | Added description and evidence for the movie list page. |
+| Search Movies by Keyword | Added description and evidence for keyword search function. |
