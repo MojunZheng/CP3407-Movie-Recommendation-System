@@ -1,5 +1,4 @@
-
-## 2.4 Iteration 2 Burndown Chart
+Iteration 2 Burndown Chart
 
 The following data is used for the Iteration 2 burndown chart.
 
