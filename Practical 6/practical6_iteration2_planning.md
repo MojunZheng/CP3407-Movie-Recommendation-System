@@ -63,7 +63,7 @@ Overall, most classes satisfy SRP because each class has a clear responsibility.
 ```mermaid
 xychart-beta
     title "Iteration 1 Burndown Chart"
-    x-axis "Days Left" [15, 12, 9, 6, 3, 0]
+    x-axis "Days Left" [20, 16, 12, 8, 4, 0]
     y-axis "Work Left (person-days)" 0 --> 45
     line "Ideal Work Left" [45, 36, 27, 18, 9, 0]
     line "Actual Work Left" [45, 38, 28, 18, 8, 0]
@@ -71,14 +71,14 @@ xychart-beta
 
 | Days Left | Ideal Work Left | Actual Work Left |
 |---:|---:|---:|
-| 15 | 45 | 45 |
-| 12 | 36 | 38 |
-| 9 | 27 | 28 |
-| 6 | 18 | 18 |
-| 3 | 9 | 8 |
+| 20 | 45 | 45 |
+| 16 | 36 | 38 |
+| 12 | 27 | 28 |
+| 8 | 18 | 18 |
+| 4 | 9 | 8 |
 | 0 | 0 | 0 |
 
-The burndown graph shows that the team started Iteration 1 with 45 person-days of planned work. The actual progress was slightly slower than the ideal line at the beginning, but the team caught up later and completed all planned work by the end of the iteration.
+The burndown graph shows that the team started Iteration 1 with 45 person-days of planned work. The x-axis shows the remaining working days from 20 to 0. The actual progress was slightly slower than the ideal line at the beginning, but the team caught up later and completed all planned work by the end of the iteration.
 
 ---
 
