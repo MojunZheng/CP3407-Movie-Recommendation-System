@@ -362,8 +362,6 @@ DATABASES = {
 }
 ```
 
-> Do not upload real database passwords to a public GitHub repository.
-
 ### 5. Run Migrations
 
 ```bash
