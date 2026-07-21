@@ -124,11 +124,11 @@ The following data is used for the Iteration 2 burndown chart.
 
 | Days Left | Ideal Work Left | Actual Work Left |
 |---:|---:|---:|
-| 15 | 80 | 80 |
-| 12 | 64 | 70 |
-| 9 | 48 | 52 |
-| 6 | 32 | 35 |
-| 3 | 16 | 15 |
+| 20 | 80 | 80 |
+| 16 | 64 | 70 |
+| 12 | 48 | 52 |
+| 8 | 32 | 35 |
+| 4 | 16 | 15 |
 | 0 | 0 | 0 |
 
 ```mermaid
