@@ -361,33 +361,6 @@ The `test_settings.py` file uses an in-memory SQLite database, so the test data 
 
 ---
 
-## GitHub Upload Notes
-
-Do not upload the following folders/files:
-
-```text
-venv/
-.idea/
-__pycache__/
-*.pyc
-db.sqlite3
-```
-
-Recommended files/folders to upload:
-
-```text
-manage.py
-README.md
-movie/
-Movie_recommendation_system/
-templates/
-static/
-practical5_iteration1_reflection.md
-practical6_iteration2_planning.md
-practical7_tdd_testing_plan.md
-```
-
----
 
 ## Notes
 
