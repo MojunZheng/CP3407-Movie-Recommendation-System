@@ -134,7 +134,7 @@ The following data is used for the Iteration 2 burndown chart.
 ```mermaid
 xychart-beta
     title "Iteration 2 Burndown Chart"
-    x-axis "Days Left" [15, 12, 9, 6, 3, 0]
+    x-axis "Days Left" [20, 16, 12, 8, 4, 0]
     y-axis "Work Left (person-days)" 0 --> 80
     line "Ideal Work Left" [80, 64, 48, 32, 16, 0]
     line "Actual Work Left" [80, 70, 52, 35, 15, 0]
