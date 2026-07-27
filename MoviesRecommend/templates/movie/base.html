@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="{% static 'movie/favicon1.ico' %}"/>
+    <link rel="bookmark" href="{% static 'movie/favicon1.ico' %}"/>
+    <meta charset="UTF-8">
+    <title>Hybrid Movie Recommendation System</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="/static/bootstrap/js/jquery.min.js">
+    <link rel="stylesheet" href="/static/bootstrap/js/bootstrap.min.js">
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'movie:index' %}">Hybrid Movie Recommendation System</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'movie:index' %}">Home</a></li>
+                <li><a href="{% url 'movie:tag' %}">Movie Categories</a></li>
+                <li><a href="{% url 'movie:hot' %}">Popular Movies</a></li>
+                {% if movie_user %}
+                    <li><a href="{% url 'movie:recommend' %}">Recommended Movies</a></li>
+                    <li><a href="{% url 'movie:history' movie_user.id %}">Rating History</a></li>
+                {% endif %}
+            </ul>
+            <form class="navbar-form navbar-left" method="GET" action="{% url 'movie:search' %}">
+                <div class="form-group">
+                    <input type="search" name="keyword" class="form-control" placeholder="Please enter movie information" required>
+                </div>
+                <button type="submit" class="btn btn-default">Search Movies</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if movie_user %}
+                    <li>
+                        <div class="btn-group" style="margin-top:10px">
+                            <button type="button" class="btn btn-info">{{ movie_user.name }}</button>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'movie:logout' %}">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'movie:register' %}">Register</a></li>
+                    <li><a href="{% url 'movie:login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block content %}
+
+{% endblock %}
+
+
+{#<div class="mastfoot" style="text-align: center;margin-top:50px;margin-bottom: 30px ">#}
+{#    <div class="inner">#}
+{#        <p>#}
+{#            <span>The Movie Recommendation System Based on Hybrid Recommendation Algorithms</span>&nbsp;&nbsp;#}
+{#            <a href="/admin">管理员入口</a>#}
+{#        </p>#}
+{#    </div>#}
+{#</div>#}
+
+</body>
+</html>

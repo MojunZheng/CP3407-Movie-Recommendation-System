@@ -1,0 +1,112 @@
+{% extends 'movie/base.html' %}
+{% block content %}
+    <script src="{% static 'layer/layer.js' %}"></script>
+    <style>
+        .poster {
+            float: left;
+            margin: 3px 12px 0 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .info {
+            margin-top: 15px;
+            float: left;
+            word-wrap: break-word;
+        }
+
+        hr {
+            -moz-border-bottom-colors: none;
+            -moz-border-image: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            border-color: #c9302c;
+            border-style: solid none;
+            border-width: 1px 0;
+            margin: 18px 0;
+        }
+    </style>
+    <div class="container">
+        {% for message in messages %}
+            {% if message.tags == 'info' %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+        <div class="alert-success alert" role="alert">Rating History</div>
+    </div>
+
+    {% for rating in ratings %}
+        <div class="container">
+            <div class="poster">
+                <a href="{% url 'movie:detail' rating.movie.pk %}" class="item">
+                    <div class="poster_div">
+                        <img src="/static/movie/poster/{{ rating.movie.imdb_id }}.jpg" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="info">
+                <p>
+                    Movie Title：
+                    {{ rating.movie.name }}
+                    <span> <br>Average Score：
+                        {% for foo in rating.movie.get_score_int_range %}
+                            ❤
+                        {% endfor %}
+                    </span>
+                    <strong style="color:#e09015">{{ rating.movie.get_score }}</strong>
+                </p>
+                <p>Cast：{{ rating.movie.actors }}</p>
+                <p>
+                    Genre：
+                    {% for genre in rating.movie.get_genre %}
+                        <a href="{% url 'movie:tag' %}?genre={{ genre }}">{{ genre }}</a>
+                        {% if not forloop.last %}
+                            <span>|</span>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <p>Runtime：{{ rating.movie.time }}</p>
+                <p>-------------------------------------------------------------------</p>
+                <p>
+                    My Rating：
+                    <strong style="color:#e09015">{{ rating.score }} </strong><br>
+                    My Review：
+                    <strong>{{ rating.comment }}</strong>
+                </p>
+                <button type="button" class="btn btn-warning"
+                        onclick="confirm_delete('{% url "movie:delete_record" rating.movie.id %}')"><span
+                        class="glyphicon glyphicon-trash"></span> Delete Review
+                </button>
+            </div>
+
+        </div>
+        <div class="container">
+            <hr>
+        </div>
+
+    {% endfor %}
+    <script>
+        function confirm_delete(url) {
+            layer.open({
+
+                title: "Confirm Delete",
+
+                content: "Confirm delete this review?",
+
+                yes: function (index, layero) {
+
+                    location.href = url
+                },
+            })
+        }
+    </script>
+    <script>
+        window.onkeyup = function (ev) {
+            var key = ev.keyCode || ev.which;
+            if (key == 27) {
+                layer.closeAll();
+            }
+        }
+    </script>
+{% endblock %}
