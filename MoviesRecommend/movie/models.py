@@ -73,8 +73,8 @@ class Movie(models.Model):
 
 # Movie Similarity
 class Movie_similarity(models.Model):
-    movie_source = models.ForeignKey(Movie, related_name='movie_source', on_delete=models.CASCADE, verbose_name="来源电影")
-    movie_target = models.ForeignKey(Movie, related_name='movie_target', on_delete=models.CASCADE, verbose_name="目标电影")
+    movie_source = models.ForeignKey(Movie, related_name='movie_source', on_delete=models.CASCADE, verbose_name="Source Movie")
+    movie_target = models.ForeignKey(Movie, related_name='movie_target', on_delete=models.CASCADE, verbose_name="Target Movie")
     similarity = models.FloatField(verbose_name="Similarity")
 
     class Meta:
