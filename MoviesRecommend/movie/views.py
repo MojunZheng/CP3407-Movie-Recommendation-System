@@ -12,7 +12,7 @@ from .models import User, Movie, Movie_rating, Movie_hot
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 
-# 首页视图
+# Home Page View
 class IndexView(ListView):
     model = Movie
     template_name = 'movie/index.html'
@@ -21,20 +21,20 @@ class IndexView(ListView):
     ordering = 'imdb_id'
     page_kwarg = 'p'
 
-    # 返回前1000部电影
+    # Return the First 1,000 Movies
     def get_queryset(self):
         return Movie.objects.filter(imdb_id__lte=1000)
 
-    # 获取上下文数据
+    # Retrieve Context Data
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(IndexView, self).get_context_data(*kwargs)
-        paginator = context.get('paginator')  # 分页器对象
-        page_obj = context.get('page_obj')  # 当前页对象
-        pagination_data = self.get_pagination_data(paginator, page_obj)  # 获取分页数据
-        context.update(pagination_data)  # 返回更新后的上下文数据
+        paginator = context.get('paginator')  # Paginator Object
+        page_obj = context.get('page_obj')  # Current Page Object
+        pagination_data = self.get_pagination_data(paginator, page_obj)  # Retrieve Paginated Data
+        context.update(pagination_data)  # Return the Updated Context Data
         return context
 
-    # 获取分页数据
+   # Retrieve Paginated Data
     def get_pagination_data(self, paginator, page_obj, around_count=2):
         current_page = page_obj.number
 
@@ -60,7 +60,7 @@ class IndexView(ListView):
         }
 
 
-# 热门电影视图
+# Popular Movies View
 class PopularMovieView(ListView):
     model = Movie_hot
     template_name = 'movie/hot.html'
@@ -69,7 +69,7 @@ class PopularMovieView(ListView):
     page_kwarg = 'p'
 
     def get_queryset(self):
-        # 初始化 计算评分人数最多的100部电影，并保存到数据库中，（不建议每次都运行）
+        # Initialization: Calculate the 100 Movies with the Most Ratings and Save Them to the Database
         movies = Movie.objects.annotate(nums=Count('movie_rating__score')).order_by('-nums')[:100]
         for movie in movies:
             record = Movie_hot(movie=movie, rating_number=movie.nums)
@@ -113,7 +113,7 @@ class PopularMovieView(ListView):
         }
 
 
-# 电影分类视图
+# Movie Category View
 class TagView(ListView):
     model = Movie
     template_name = 'movie/tag.html'
@@ -121,13 +121,13 @@ class TagView(ListView):
     context_object_name = 'movies'
     page_kwarg = 'p'
 
-    # 获取数据
+    # Retrieve Data
     def get_queryset(self):
-        # 未选择分类
+        # No Category Selected
         if 'genre' not in self.request.GET.dict().keys() or self.request.GET.dict()['genre'] == "":
             movies = Movie.objects.all()
             return movies[100:200]
-        # 有分类选择
+        # Category Selected
         else:
             movies = Movie.objects.filter(genre__name=self.request.GET.dict()['genre'])
             print(movies)
@@ -169,7 +169,7 @@ class TagView(ListView):
         }
 
 
-# 搜索电影视图
+# Movie Search View
 class SearchView(ListView):
     model = Movie
     template_name = 'movie/search.html'
@@ -215,7 +215,7 @@ class SearchView(ListView):
         }
 
 
-# 注册视图
+# Registration View
 class RegisterView(View):
     def get(self, request):
         return render(request, 'movie/register.html')
@@ -226,7 +226,7 @@ class RegisterView(View):
             form.save()
             return redirect(reverse('movie:index'))
         else:
-            # 表单验证失败，重定向到注册页面
+            # If Form Validation Fails, Redirect to the Registration Page
             errors = form.get_errors()
             for error in errors:
                 messages.info(request, error)
