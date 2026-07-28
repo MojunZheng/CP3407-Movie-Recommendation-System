@@ -1,29 +1,29 @@
 import os
 
-# 项目路径
+# Project Path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# 项目秘钥
+# Project Secret Key
 SECRET_KEY = 'bhml2023(140w8x3ktw=yzm0=@3h5wr=$$4s!g(s-^s7^@e5=kz'
 
-# 调试模式
+# Debug Mode
 DEBUG = True
 
-# 允许的主机
+# Allowed Hosts
 ALLOWED_HOSTS = []
 
-# 注册app
+# Register App
 INSTALLED_APPS = [
-    'django.contrib.admin',  # 后台管理系统
+    'django.contrib.admin',  # Admin Management System
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movie'  # 电影推荐系统
+    'movie'  # Movie Recommendation System
 ]
 
-# 中间件
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -34,10 +34,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# 主路由
+# Main Routes
 ROOT_URLCONF = 'Movie_recommendation_system.urls'
 
-# 模板文件配置
+# Template File Configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -58,7 +58,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Movie_recommendation_system.wsgi.application'
 
-# 数据库配置
+# Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -70,7 +70,7 @@ DATABASES = {
     }
 }
 
-# 密码验证
+# Password Validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -86,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# 国际化配置
+# Internationalization Configuration
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
@@ -94,7 +94,7 @@ USE_L10N = True
 USE_TZ = False
 
 
-# 静态文件 (CSS, JavaScript, Images)
+# Static Files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
