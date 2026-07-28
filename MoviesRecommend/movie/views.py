@@ -234,7 +234,7 @@ class RegisterView(View):
             return redirect(reverse('movie:register'))
 
 
-# 登录视图
+# Login View
 class LoginView(View):
     def get(self, request):
         return render(request, 'movie/login.html')
@@ -248,17 +248,17 @@ class LoginView(View):
             user = User.objects.filter(name=name, password=pwd).first()
             if user:
                 if remember:
-                    # 设置为None，则表示使用全局的过期时间
+                    # Set to None to Use the Global Expiration Time
                     request.session.set_expiry(None)
                 else:
-                    # 立即过期
+                    # Expire Immediately
                     request.session.set_expiry(0)
-                # 登录成功，在session 存储当前用户的id，作为标识
+                # Login Successful: Store the Current User's ID in the Session as an Identifier
                 request.session['user_id'] = user.id
                 return redirect(reverse('movie:index'))
 
             else:
-                messages.info(request, '用户名或者密码错误!')
+                messages.info(request, 'Incorrect username or password!')
                 return redirect(reverse('movie:login'))
         else:
             errors = form.get_errors()
@@ -267,39 +267,39 @@ class LoginView(View):
             return redirect(reverse('movie:login'))
 
 
-# 登出，立即销毁session停止会话
+# Log Out and Immediately Destroy the Session
 def UserLogout(request):
     request.session.set_expiry(-1)
     return redirect(reverse('movie:index'))
 
 
-# 电影详情视图
+# Movie Details View
 class MovieDetailView(DetailView):
     model = Movie
     template_name = 'movie/detail.html'
-    # 上下文对象的名称
+    # Context Object Name
     context_object_name = 'movie'
 
-    # 重写获取上下文方法，增加评分参数
+    # Override the Context Retrieval Method to Include the Rating Parameter
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # 判断是否登录用
+        # Used to Check Whether the User Is Logged In
         login = True
         try:
             user_id = self.request.session['user_id']
         except KeyError as e:
-            login = False  # 未登录
+            login = False  # Not Logged In
 
-        # 获得电影的pk（这里pk就是id）
+        # Get the Movie ID
         pk = self.kwargs['pk']
         movie = Movie.objects.get(pk=pk)
 
         if login:
-            # 已经登录，获取当前用户的历史评分数据
+            # If Logged In, Retrieve the Current User's Rating History
             user = User.objects.get(pk=user_id)
 
             rating = Movie_rating.objects.filter(user=user, movie=movie).first()
-            # 默认值
+            # Default Value
             score = 0
             comment = ''
             if rating:
@@ -308,14 +308,14 @@ class MovieDetailView(DetailView):
             context.update({'score': score, 'comment': comment})
 
         similarity_movies = movie.get_similarity()
-        # 获取与当前电影最相似的电影
+        # Retrieve Movies Most Similar to the Current Movie
         context.update({'similarity_movies': similarity_movies})
-        # 判断是否登录，没有登录则不显示评分页面
+        # Check Whether the User Is Logged In; Hide the Rating Page If Not Logged In
         context.update({'login': login})
 
         return context
 
-    # 接受评分表单,pk是当前电影的数据库主键id
+    # Accept the Rating Form; pk Is the Database Primary Key ID of the Current Movie
     def post(self, request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
