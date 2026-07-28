@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             name='Movie',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=256, verbose_name='电影名')),
+                ('name', models.CharField(max_length=256, verbose_name='Movie Title')),
                 ('imdb_id', models.IntegerField()),
                 ('time', models.CharField(blank=True, max_length=256)),
                 ('release_time', models.CharField(blank=True, max_length=256)),
