@@ -1,7 +1,7 @@
 from .models import User
 
 
-# 未登录返回空
+# Return Empty If Not Logged In
 def movie_user(request):
     user_id = request.session.get('user_id')
     context = {}
