@@ -1,13 +1,4 @@
-/*!
- * @copyright &copy; Kartik Visweswaran, Krajee.com, 2014
- * @version 2.5.0
- *
- * A simple yet powerful JQuery star rating plugin that allows rendering
- * fractional star ratings and supports Right to Left (RTL) input.
- * 
- * For more JQuery plugins visit http://plugins.krajee.com
- * For more Yii related demos visit http://demos.krajee.com
- */
+
 (function ($) {
     var DEFAULT_MIN = 0;
     var DEFAULT_MAX = 5;
@@ -374,7 +365,7 @@
         clearButtonTitle: 'Clear',
         clearButtonBaseClass: 'clear-rating',
         clearButtonActiveClass: 'clear-rating-active',
-        clearCaption: '暂未评分',
+        clearCaption: 'No Rating Yet',
         clearCaptionClass: 'label label-default',
         clearValue: 0,
         captionElement: null,
