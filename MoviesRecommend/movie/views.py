@@ -319,64 +319,64 @@ class MovieDetailView(DetailView):
     def post(self, request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
-            # 获取分数和评论
+            # Retrieve the Rating and Review
             score = form.cleaned_data.get('score')
             comment = form.cleaned_data.get('comment')
-            # 获取用户和电影
+            # Retrieve the User and Movie
             user_id = request.session['user_id']
             user = User.objects.get(pk=user_id)
             movie = Movie.objects.get(pk=pk)
 
-            # 更新一条记录
+            # Update a Record
             rating = Movie_rating.objects.filter(user=user, movie=movie).first()
             if rating:
-                # 如果存在则更新
+                # Update If It Exists
                 # print(rating)
                 rating.score = score
                 rating.comment = comment
                 rating.save()
             else:
-                # 如果不存在则添加
+                # Add If It Does Not Exist
                 rating = Movie_rating(user=user, movie=movie, score=score, comment=comment)
                 rating.save()
-            messages.info(request, "评论成功!")
+            messages.info(request, "Review submitted successfully!")
         else:
-            # 表单没有验证通过
-            messages.info(request, "评分不能为空!")
+            # Form Validation Failed
+            messages.info(request, "Rating cannot be empty!")
         return redirect(reverse('movie:detail', args=(pk,)))
 
 
-# 历史评分视图
+# Rating History View
 class RatingHistoryView(DetailView):
     model = User
     template_name = 'movie/history.html'
-    # 上下文对象的名称
+    # Context Object Name
     context_object_name = 'user'
 
     def get_context_data(self, **kwargs):
-        # 这里要增加的对象：当前用户打过分的电影历史
+        # Object to Add Here: Movie Rating History of the Current User
         context = super().get_context_data(**kwargs)
         user_id = self.request.session['user_id']
         user = User.objects.get(pk=user_id)
-        # 获取ratings即可
+        # Retrieve Ratings Only
         ratings = Movie_rating.objects.filter(user=user).order_by('-score')
         context.update({'ratings': ratings})
         return context
 
 
-# 删除打分评论数据
+# Delete Rating and Review Data
 def delete_recode(request, pk):
     movie = Movie.objects.get(pk=pk)
     user_id = request.session['user_id']
     user = User.objects.get(pk=user_id)
     rating = Movie_rating.objects.get(user=user, movie=movie)
     rating.delete()
-    messages.info(request, f"删除 {movie.name} 评分记录成功！")
-    # 跳转回评分历史
+    messages.info(request, f"Delete {movie.name} Rating saved successfully!")
+    # Redirect Back to Rating History
     return redirect(reverse('movie:history', args=(user_id,)))
 
 
-# 推荐电影视图
+# Movie Recommendation View
 class RecommendMovieView(ListView):
     model = Movie
     template_name = 'movie/recommend.html'
@@ -387,65 +387,65 @@ class RecommendMovieView(ListView):
 
     def __init__(self):
         super().__init__()
-        # 最相似的20个用户
+        # Top 20 Most Similar Users
         self.K = 20
-        # 推荐出10本书
+        # Recommend 10 Books
         self.N = 10
-        # 存放当前用户评分过的电影querySet
+        # QuerySet Containing Movies Rated by the Current User
         self.cur_user_movie_qs = None
 
-    # 获取用户相似度
+    # Retrieve User Similarity
     def get_user_sim(self):
-        # 用户相似度字典，格式为{ user_id1:val , user_id2:val , ... }
+        # User Similarity Dictionary, Format: {user_id1: val, user_id2: val, ...}
         user_sim_dct = dict()
-        '''获取用户之间的相似度,存放在user_sim_dct中'''
-        # 获取当前用户
+        '''Calculate the Similarity Between Users and Store It in user_sim_dct'''
+        # Retrieve the Current User
         cur_user_id = self.request.session['user_id']
         cur_user = User.objects.get(pk=cur_user_id)
-        # 获取其它用户
-        other_users = User.objects.exclude(pk=cur_user_id)  # 除了当前用户外的所有用户
-
-        # 当前用户评分过的电影
+        # Retrieve Other Users
+        other_users = User.objects.exclude(pk=cur_user_id)  # All Users Except the Current User
+        
+        # Movies Rated by the Current User
         self.cur_user_movie_qs = Movie.objects.filter(user=cur_user)
 
-        # 计算当前用户与其他用户共同评分过的电影交集数
+        # Calculate the Number of Movies Rated by Both the Current User and Other Users
         for user in other_users:
-            # 记录感兴趣的数量
+            # Record the Number of Common Interests
             user_sim_dct[user.id] = len(Movie.objects.filter(user=user) & self.cur_user_movie_qs)
 
-        # 按照key排序value，返回K个最相近的用户（共同评分过的电影交集数更多）
+        # Sort by Value and Return the K Most Similar Users
         print("user similarity calculated!")
-        # 格式 [ (user, value), (user, value), ... ]
+        # Format: [(user, value), (user, value), ...]
         return sorted(user_sim_dct.items(), key=lambda x: -x[1])[:self.K]
 
-    # 获取推荐电影（按照相似用户总得分排序）
+    # Retrieve Recommended Movies (Sorted by the Total Ratings from Similar Users)
     def get_recommend_movie(self, user_lst):
-        # 电影兴趣值字典，{ movie:value, movie:value , ...}
+        # Movie Interest Value Dictionary: {movie: value, movie: value, ...}
         movie_val_dct = dict()
-        # 用户，相似度
+        # User and Similarity
         for user, _ in user_lst:
-            # 获取相似用户评分过的电影，并且不在前用户的评分列表中的，再加上score字段，方便计算兴趣值
+            # Retrieve Movies Rated by Similar Users but Not Rated by the Current User, and Include the Score Field for Calculating Interest Values
             movie_set = Movie.objects.filter(user=user).exclude(id__in=self.cur_user_movie_qs).annotate(
                 score=Max('movie_rating__score'))
             for movie in movie_set:
                 movie_val_dct.setdefault(movie, 0)
-                # 累计用户的评分
+                # Accumulate User Ratings
                 movie_val_dct[movie] += movie.score
         return sorted(movie_val_dct.items(), key=lambda x: -x[1])[:self.N]
 
-    # 获取数据
+    # Retrieve Data
     def get_queryset(self):
         s = time.time()
-        # 获得最相似的K个用户列表
+        # Get the List of the K Most Similar Users
         user_lst = self.get_user_sim()
-        # 获得推荐电影的id
+        # Get the List of the K Most Similar Users
         movie_lst = self.get_recommend_movie(user_lst)
         # print(movie_lst)
         result_lst = []
         for movie, _ in movie_lst:
             result_lst.append(movie)
         e = time.time()
-        print(f"算法推荐用时:{e - s}秒！")
+        print(f"Get the Recommended Movie IDs. Algorithm Execution Time: {e - s} Seconds!")
         return result_lst
 
     def get_context_data(self, *, object_list=None, **kwargs):
