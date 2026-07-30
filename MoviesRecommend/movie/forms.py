@@ -31,6 +31,15 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['name', 'password', 'email']
 
+        error_messages = {
+            'name': {
+                'unique': 'This username already exists.'
+            },
+            'email': {
+                'invalid': 'Enter a valid email address.',
+                'unique': 'This email address is already registered.'
+            }
+        }
 
 # Login Form
 class LoginForm(forms.ModelForm):
